@@ -113,3 +113,17 @@ try:
 
 except Exception as e:
     st.error(f"Chyba při zpracování dat: {e}")
+# --- PATIČKA ---
+st.sidebar.markdown("---")
+st.sidebar.caption(f"""
+**Právní doložka a prohlášení:** Tento web je neoficiální projekt vytvořený výhradně pro účely maturitní práce a edukaci v oblasti analýzy dat. Projekt je vytvořen v souladu s § 35 odst. 3 zákona č. 121/2000 Sb. (Autorský zákon) o užití školního díla pro potřeby školy a pro účely výuky.
+
+1. **Zdroje dat:** Veškeré technické parametry a dobové ceny byly čerpány z veřejně dostupných archivů a oficiálních materiálů Škoda Auto.  
+2. **Aktualita:** Data mají informativní charakter a mohou se lišit od reálných historických nabídek. Autor neručí za případné chyby v datech.  
+3. **Autorská práva:** Užití ochranných známek slouží výhradně k identifikaci produktů a nepředstavuje spojení s držitelem práv. Ochranná známka Škoda a názvy modelů jsou majetkem společnosti Škoda Auto a.s.  
+4. **Neziskovost:** Projekt není využíván ke komerčním účelům ani k žádné formě výdělku.
+
+**Autor:** Vojtěch Hendrych  
+**Škola:** SPŠ strojnická, Betlémská 287/4, Praha 1  
+**Školní rok:** 2025/2026
+""")
