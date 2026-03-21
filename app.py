@@ -7,7 +7,7 @@ st.set_page_config(page_title="Katalog Škoda Fabia", layout="wide")
 @st.cache_data
 def load_data():
     # Načtení dat (soubor musí být ve stejné složce)
-    df = pd.read_excel("Py_F_data.xlsx")
+    df = pd.read_excel("Py_F_data_1.xlsx")
     df.columns = df.columns.str.strip()
     return df
 
@@ -18,19 +18,19 @@ try:
     st.sidebar.header("🔍 Výběr vozu")
     
     # 1. Výběr generace
-    seznam_gen = sorted(df['generace'].unique())
+    seznam_gen = sorted(df['Generace'].unique())
     v_gen = st.sidebar.selectbox("1. Vyberte generaci:", seznam_gen)
     
     # 2. Výběr karoserie (jen ty, které jsou v dané generaci)
-    maska_gen = df['generace'] == v_gen
-    seznam_kar = df[maska_gen]['karoserie'].unique().tolist()
+    maska_gen = df['Generace'] == v_gen
+    seznam_kar = df[maska_gen]['Karoserie'].unique().tolist()
     # Seřadíme podle tvého přání: Hatchback, Combi, Sedan (pokud existují)
     poradi = ["Hatchback", "Combi", "Sedan"]
     seznam_kar = sorted(seznam_kar, key=lambda x: poradi.index(x) if x in poradi else 99)
     v_kar = st.sidebar.selectbox("2. Vyberte karoserii:", seznam_kar)
     
     # 3. Výběr motoru
-    maska_kar = (df['generace'] == v_gen) & (df['karoserie'] == v_kar)
+    maska_kar = (df['Generace'] == v_gen) & (df['Karoserie'] == v_kar)
     seznam_mot = df[maska_kar]['Motor'].unique().tolist()
     v_mot = st.sidebar.selectbox("3. Vyberte motorizaci:", seznam_mot)
 
@@ -79,10 +79,10 @@ try:
 
     st.markdown("---")
     st.subheader("💰 Dostupná výbava a dobové ceny")
-    
+
     # Definujeme, co jsou technické parametry (ty už jsme vypsali výše)
     technika = [
-        'Motor', 'generace', 'karoserie', 'Objem [l]', 'Výkon [kW]', 'Točivý moment [Nm]',
+        'Motor', 'Generace', 'Karoserie', 'Objem [l]', 'Výkon [kW]', 'Točivý moment [Nm]',
         'Zdvihový objem v [cm³]', 'Počet válců', 'Typ', 'Pohon', 'Převodovka', 'Spojka',
         'Nejvyšší rychlost [km/h]', 'Zrychlení 0 - 100 km/h', 'Typ paliva',
         'Kombinovaná spotřeba paliva [l/100 km]', 'Emisní hodnoty CO2 [g/km]',
